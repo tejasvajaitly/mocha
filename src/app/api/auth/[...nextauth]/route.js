@@ -1,17 +1,12 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
-import spotifyApi, { LOGIN_URL, testLol } from "@/app/api/lib/spotify";
+import spotifyApi, { LOGIN_URL } from "@/app/api/lib/spotify";
 
 async function refreshAccessToken(token) {
 	try {
 		spotifyApi.setAccessToken(token.accessToken);
 		spotifyApi.setRefreshToken(token.refreshToken);
 		const { body: refreshedToken } = await spotifyApi.refreshAccessToken();
-
-		spotifyApi.setAccessToken(refreshedToken.access_token);
-		spotifyApi.setRefreshToken(
-			refreshedToken.refresh_token ?? token.refreshToken
-		);
 
 		return {
 			...token,
@@ -43,10 +38,6 @@ export const authOptions = {
 		async jwt({ token, account, user }) {
 			//initial sign in
 			if (account && user) {
-				spotifyApi.setAccessToken(account.access_token);
-				spotifyApi.setRefreshToken(account.refresh_token);
-				testLol.setVar = "Changed in initial sign in";
-				console.log("initial sign in", spotifyApi);
 				return {
 					...token,
 					accessToken: account.access_token,
@@ -58,23 +49,11 @@ export const authOptions = {
 
 			//return previous token if the accessToken has not expired yet
 			if (Date.now() < token.accessTokenExpires) {
-				spotifyApi.setAccessToken(token.accessToken);
-				spotifyApi.setRefreshToken(token.refreshToken);
-				console.log(
-					"return previous token since the accessToken has not expired yet",
-					spotifyApi
-				);
-				testLol.setVar =
-					"changed in return previous token since the accessToken has not expired yet";
 				return token;
 			}
 
 			//access token has expired, we will refresh it
-			const res = await refreshAccessToken(token);
-			console.log("access token was expired, we have refreshed it", spotifyApi);
-			testLol.setVar =
-				"changed in access token has expired, we will refresh it";
-			return res;
+			return await refreshAccessToken(token);
 		},
 
 		async session({ session, token }) {
