@@ -8,7 +8,7 @@ export default function PeriodTabs({ data }) {
 	return (
 		<div className="w-full max-w-md px-2 py-16 sm:px-0">
 			{console.log(data, "data")}
-			{/* <Tab.Group>
+			<Tab.Group>
 				<Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
 					{Object.keys(data.data.artists).map((category) => (
 						<Tab
@@ -59,7 +59,7 @@ export default function PeriodTabs({ data }) {
 						</Tab.Panel>
 					))}
 				</Tab.Panels>
-			</Tab.Group> */}
+			</Tab.Group>
 		</div>
 	);
 }
