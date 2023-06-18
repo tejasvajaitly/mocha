@@ -890,7 +890,7 @@ export default function HomeScreenTable() {
 													</div>
 													<div className="ml-4">
 														<div className="text-sm font-medium text-gray-900 whitespace-pre-wrap">
-															223's (feat. BabyTron)
+															223&quot; s (feat. BabyTron)
 														</div>
 														<div className="text-sm font-medium text-gray-500 whitespace-pre-wrap">
 															midwxst, BabyTron
@@ -1031,8 +1031,8 @@ export default function HomeScreenTable() {
 													</div>
 													<div className="ml-4">
 														<div className="text-sm font-medium text-gray-900 whitespace-pre-wrap">
-															I'm the One (feat. Justin Bieber, Quavo, Chance
-															the Rapper &amp; Lil Wayne)
+															I&quot; m the One (feat. Justin Bieber, Quavo,
+															Chance the Rapper &amp; Lil Wayne)
 														</div>
 														<div className="text-sm font-medium text-gray-500 whitespace-pre-wrap">
 															DJ Khaled, Justin Bieber, Quavo, Chance the
