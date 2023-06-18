@@ -11,8 +11,6 @@ export async function GET(request) {
 
 	if (spotifyApi?._credentials?.accessToken) {
 		try {
-			console.log(spotifyApi, "spotifyApi before api call");
-			console.log(testLol, "testLol before api call");
 			const topArtistShortPromise = spotifyApi.getMyTopArtists({
 				time_range: "short_term",
 				limit: 10,

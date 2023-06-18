@@ -26,7 +26,7 @@ const Navbar = (props) => {
 	if (!mounted) return null;
 	return (
 		<nav className="bg-white border-b-2 dark:bg-black">
-			<div className="max-w-screen-md flex flex-wrap items-center justify-between mx-auto p-4">
+			<div className="max-w-screen-md flex flex-wrap items-center justify-between mx-auto p-4 px-10">
 				<a href="/" className="flex items-end">
 					<span className="text-sm font-semibold whitespace-nowrap dark:text-white">
 						mocha
@@ -45,7 +45,7 @@ const Navbar = (props) => {
 							</button>
 						)}
 
-						<button
+						{/* <button
 							aria-label="Toggle Dark Mode"
 							type="button"
 							className="flex items-center justify-center rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700"
@@ -58,7 +58,7 @@ const Navbar = (props) => {
 							) : (
 								<MoonIcon className="h-5 w-5 text-slate-800" />
 							)}
-						</button>
+						</button> */}
 					</div>
 				</div>
 			</div>
