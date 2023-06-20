@@ -13,28 +13,30 @@ export async function GET(request) {
 		try {
 			const topArtistShortPromise = spotifyApi.getMyTopArtists({
 				time_range: "short_term",
-				limit: 10,
+				limit: 20,
 			});
 			const topArtistMediumPromise = spotifyApi.getMyTopArtists({
 				time_range: "medium_term",
-				limit: 10,
+				limit: 20,
 			});
 			const topArtistLongPromise = spotifyApi.getMyTopArtists({
 				time_range: "long_term",
-				limit: 10,
+				limit: 20,
 			});
 			const topTracksShortPromise = spotifyApi.getMyTopTracks({
 				time_range: "short_term",
-				limit: 10,
+				limit: 20,
 			});
 			const topTracksMediumPromise = spotifyApi.getMyTopTracks({
 				time_range: "medium_term",
-				limit: 10,
+				limit: 20,
 			});
 			const topTracksLongPromise = spotifyApi.getMyTopTracks({
 				time_range: "long_term",
-				limit: 10,
+				limit: 20,
 			});
+
+			const user = await spotifyApi.getMe();
 
 			const topArtistShort = await topArtistShortPromise;
 			const topArtistMedium = await topArtistMediumPromise;
@@ -46,15 +48,16 @@ export async function GET(request) {
 
 			const data = {
 				artists: {
-					long: topArtistLong.body.items,
-					medium: topArtistMedium.body.items,
 					short: topArtistShort.body.items,
+					medium: topArtistMedium.body.items,
+					long: topArtistLong.body.items,
 				},
 				tracks: {
-					long: topTracksLong.body.items,
-					medium: topTracksMedium.body.items,
 					short: topTracksShort.body.items,
+					medium: topTracksMedium.body.items,
+					long: topTracksLong.body.items,
 				},
+				user: user.body,
 			};
 			return NextResponse.json({ data });
 		} catch (resError) {

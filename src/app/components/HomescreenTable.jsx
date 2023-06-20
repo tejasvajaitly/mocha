@@ -1,3 +1,29 @@
+const head = [
+	{
+		href: "https://open.spotify.com/artist/4MCBfE4596Uoi2O4DtmEMz",
+		srcSet:
+			"https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 160w, https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 320w, https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 640w",
+		src: "https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944",
+		alt: "Juice WRLD",
+	},
+
+	{
+		href: "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4",
+		srcSet:
+			"https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 160w, https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 320w, https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 640w",
+		src: "https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9",
+		alt: "Drake",
+	},
+
+	{
+		href: "https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq",
+		srcSet:
+			"https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 160w, https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 320w, https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 640w",
+		src: "https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45",
+		alt: "Lil Nas X",
+	},
+];
+
 export default function HomeScreenTable() {
 	return (
 		<div
@@ -17,60 +43,23 @@ export default function HomeScreenTable() {
 			>
 				<div>
 					<div className="flex flex-row space-x-4 pb-2">
-						<div
-							className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center"
-							style={{ paddingTop: "32%" }}
-						>
-							<a
-								target="_blank"
-								href="https://open.spotify.com/artist/4MCBfE4596Uoi2O4DtmEMz"
+						{head.map((artist) => (
+							<div
+								className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center"
+								style={{ paddingTop: "32%" }}
 							>
-								<img
-									className="absolute top-0 left-0 bg-cover object-cover w-full h-full bg-center"
-									srcSet="https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 160w, https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 320w, https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944 640w"
-									sizes="(max-width: 550px) 160px, 215px"
-									src="https://i.scdn.co/image/ab6761610000e5eb1908e1a8b79abf71d5598944"
-									alt="Juice WRLD"
-									fetchPriority="high"
-								/>
-							</a>
-						</div>
-						<div
-							className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center"
-							style={{ paddingTop: "32%" }}
-						>
-							<a
-								target="_blank"
-								href="https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
-							>
-								<img
-									className="absolute top-0 left-0 bg-cover object-cover w-full h-full bg-center"
-									srcSet="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 160w, https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 320w, https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9 640w"
-									sizes="(max-width: 550px) 160px, 215px"
-									src="https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9"
-									alt="Drake"
-									fetchPriority="high"
-								/>
-							</a>
-						</div>
-						<div
-							className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center"
-							style={{ paddingTop: "32%" }}
-						>
-							<a
-								target="_blank"
-								href="https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq"
-							>
-								<img
-									className="absolute top-0 left-0 bg-cover object-cover w-full h-full bg-center"
-									srcSet="https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 160w, https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 320w, https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45 640w"
-									sizes="(max-width: 550px) 160px, 215px"
-									src="https://i.scdn.co/image/ab6761610000e5ebd66f1e0c883f319443d68c45"
-									alt="Lil Nas X"
-									fetchPriority="high"
-								/>
-							</a>
-						</div>
+								<a target="_blank" href="">
+									<img
+										className="absolute top-0 left-0 bg-cover object-cover w-full h-full bg-center"
+										srcSet={artist.srcSet}
+										sizes="(max-width: 550px) 160px, 215px"
+										src={artist.src}
+										alt={artist.alt}
+										fetchPriority="high"
+									/>
+								</a>
+							</div>
+						))}
 					</div>
 					<div className="py-2 align-middle inline-block min-w-full">
 						<div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -93,7 +82,7 @@ export default function HomeScreenTable() {
 										<th />
 									</tr>
 								</thead>
-								<tbody className="divide-y divide-gray-200 dark:divide-gray-600">
+								<tbody className="divide-y divide-gray-200 ">
 									<tr>
 										<td className="px-2 md:px-6 py-2 whitespace-nowrap text-xl text-gray-500 text-center">
 											<div className="flex flex-row justify-center items-center">
@@ -124,7 +113,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -174,7 +163,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -224,7 +213,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -274,7 +263,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -324,7 +313,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -374,7 +363,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -418,7 +407,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -462,7 +451,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -506,7 +495,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -550,7 +539,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -660,7 +649,7 @@ export default function HomeScreenTable() {
 										<th>&nbsp;</th>
 									</tr>
 								</thead>
-								<tbody className="divide-y divide-gray-200 dark:divide-gray-600">
+								<tbody className="divide-y divide-gray-200 ">
 									<tr>
 										<td className="px-2 md:px-6 py-2 whitespace-nowrap text-xl text-gray-500 text-center">
 											<div className="flex flex-row justify-center items-center">
@@ -688,7 +677,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -741,7 +730,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -794,7 +783,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -847,7 +836,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -900,7 +889,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -947,7 +936,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -994,7 +983,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -1043,7 +1032,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -1090,7 +1079,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -1137,7 +1126,7 @@ export default function HomeScreenTable() {
 											</a>
 										</td>
 										<td className="w-28">
-											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10 dark:ring-slate-200/50 hover:bg-slate-50">
+											<div className="pointer-events-auto rounded-md text-xs mx-2 text-slate-700 shadow-sm ring-1 ring-slate-700/10  hover:bg-slate-50">
 												<a
 													target="_blank"
 													className="py-[0.3125rem] px-1 block text-center"
@@ -1189,7 +1178,7 @@ export default function HomeScreenTable() {
 										</th>
 									</tr>
 								</thead>
-								<tbody className="divide-y divide-gray-200 dark:divide-gray-600">
+								<tbody className="divide-y divide-gray-200 ">
 									<tr>
 										<td className="px-6 py-2 whitespace-nowrap text-xl text-gray-500 text-center">
 											<div className="flex flex-row justify-center items-center">
