@@ -43,10 +43,11 @@ export default function HomeScreenTable() {
 			>
 				<div>
 					<div className="flex flex-row space-x-4 pb-2">
-						{head.map((artist) => (
+						{head.map((artist, idx) => (
 							<div
 								className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center"
 								style={{ paddingTop: "32%" }}
+								key={idx}
 							>
 								<a target="_blank" href="">
 									<img
