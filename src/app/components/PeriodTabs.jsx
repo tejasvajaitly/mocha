@@ -329,8 +329,8 @@ const TableSkeleton = () => (
 					</tr>
 				</thead>
 				<tbody className="divide-y divide-gray-200">
-					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((f) => (
-						<tr>
+					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((f, idx) => (
+						<tr key={idx}>
 							<td className="px-2 md:px-6 py-2  text-xl text-gray-500 text-center">
 								<div className="flex flex-row justify-center items-center">
 									<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-8"></div>
