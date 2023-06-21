@@ -17,11 +17,36 @@ function classNames(...classes) {
 
 export default function PeriodTabs({ data, user, type }) {
 	const [expanded, setExpanded] = useState(false);
+	const [selectedIndex, setSelectedIndex] = useState(0);
+
+	const calculatePosition = (id, itemIdx) => {
+		if (selectedIndex === 0) {
+			if (data.medium[itemIdx].id === id) {
+				return <div class="text-sm text-gray-500 ml-2">=</div>;
+			} else if (data.medium.slice(0, itemIdx).find((o) => o.id === id)) {
+				return <div class="text-sm text-red-500 ml-2">▼</div>;
+			} else {
+				return <div class="text-sm text-green-500 ml-2">▲</div>;
+			}
+		}
+		if (selectedIndex === 1) {
+			if (data.long[itemIdx].id === id) {
+				return <div class="text-sm text-gray-500 ml-2">=</div>;
+			} else if (data.long.slice(0, itemIdx).find((o) => o.id === id)) {
+				return <div class="text-sm text-red-500 ml-2">▼</div>;
+			} else {
+				return <div class="text-sm text-green-500 ml-2">▲</div>;
+			}
+		}
+	};
+
 	return (
-		<div>
+		<div className="mt-12">
 			<Profile type={type} user={user} />
 			<Tab.Group
-				onChange={() => {
+				selectedIndex={selectedIndex}
+				onChange={(e) => {
+					setSelectedIndex(e);
 					setExpanded(!expanded);
 				}}
 			>
@@ -56,7 +81,11 @@ export default function PeriodTabs({ data, user, type }) {
 												<td className="px-2 md:px-6 py-2  text-xl text-gray-500 text-center">
 													<div className="flex flex-row justify-center items-center">
 														{idx + 1}
-														<div className="text-sm text-green-500 ml-2">▲</div>
+														{selectedIndex !== 2 ? (
+															<div className="text-sm text-green-500 ml-2">
+																{calculatePosition(info.id, idx)}
+															</div>
+														) : null}
 													</div>
 												</td>
 												<td className="px-2 md:px-6 py-2 whitespace-nowrap">
@@ -161,9 +190,13 @@ const TopThree = ({ type, timeRange }) => {
 	return (
 		<div className="flex flex-row justify-evenly gap-3">
 			{timeRange.slice(0, 3).map((info) => (
-				<div key={info?.id}>
+				<div
+					key={info?.id}
+					className="relative flex-1 h-0 overflow-hidden bg-gray-50 flex items-center justify-center pt-[32%]"
+				>
 					<a target="_blank" href={info?.external_urls?.spotify}>
 						<Image
+							className="absolute top-0 left-0 bg-cover object-cover w-full h-full bg-center"
 							width={500}
 							height={500}
 							src={
