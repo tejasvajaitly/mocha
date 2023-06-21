@@ -21,7 +21,7 @@ export default function PeriodTabs({ isLoading, data, user, type }) {
 
 	const calculatePosition = (id, itemIdx) => {
 		if (selectedIndex === 0) {
-			if (data.medium[itemIdx].id === id) {
+			if (data?.medium[itemIdx]?.id === id) {
 				return <div class="text-sm text-gray-500 ml-2">=</div>;
 			} else if (data.medium.slice(0, itemIdx).find((o) => o.id === id)) {
 				return <div class="text-sm text-red-500 ml-2">▼</div>;
@@ -30,7 +30,7 @@ export default function PeriodTabs({ isLoading, data, user, type }) {
 			}
 		}
 		if (selectedIndex === 1) {
-			if (data.long[itemIdx].id === id) {
+			if (data?.long[itemIdx]?.id === id) {
 				return <div class="text-sm text-gray-500 ml-2">=</div>;
 			} else if (data.long.slice(0, itemIdx).find((o) => o.id === id)) {
 				return <div class="text-sm text-red-500 ml-2">▼</div>;
