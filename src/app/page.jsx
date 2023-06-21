@@ -8,8 +8,9 @@ export default async function Home() {
 	const session = await getServerSession(authOptions);
 	if (session) {
 		return (
-			<main className="max-w-screen-md  mx-auto p-4 px-10">
+			<main className="max-w-screen-md  mx-auto p-2 px-10">
 				<SpotifyTops />
+				<Footer />
 			</main>
 		);
 	}
@@ -177,21 +178,24 @@ export default async function Home() {
 							</div>
 						</div>
 					</div>
-					<hr className="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
-					<div className="sm:flex sm:items-center sm:justify-between">
-						<span className="text-sm text-gray-500 sm:text-center ">
-							© 2023{" "}
-							<a
-								href="https://mocha-seven.vercel.app/"
-								className="hover:underline"
-							>
-								mocha
-							</a>
-							. All Rights Reserved.
-						</span>
-					</div>
+					<Footer />
 				</div>
 			</footer>
 		</main>
 	);
 }
+
+const Footer = () => (
+	<footer>
+		<hr className="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
+		<div className="sm:flex sm:items-center sm:justify-between">
+			<span className="text-sm text-gray-500 sm:text-center ">
+				© 2023{" "}
+				<a href="https://mocha-seven.vercel.app/" className="hover:underline">
+					mocha
+				</a>
+				. All Rights Reserved.
+			</span>
+		</div>
+	</footer>
+);

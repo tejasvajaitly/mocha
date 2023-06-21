@@ -1,7 +1,8 @@
 "use client";
-import { UserIcon } from "@heroicons/react/24/solid";
+
 import PeriodTabs from "./PeriodTabs.jsx";
 import { useQuery } from "@tanstack/react-query";
+import Skeleton from "../components/Skeleton.jsx";
 
 function SpotifyTops() {
 	const { isLoading, isError, data, error, refetch } = useQuery({
@@ -10,26 +11,21 @@ function SpotifyTops() {
 	});
 	return (
 		<div>
-			{isLoading ? (
-				<h1>Loading!!!!!!!!!</h1>
-			) : data ? (
-				<>
-					{console.log(data, "data")}
-					<PeriodTabs
-						data={data.data.artists}
-						heading="Artist"
-						user={data.data.user}
-						type="artist"
-					/>
+			<PeriodTabs
+				isLoading={isLoading}
+				data={data?.data?.artists}
+				heading="Artist"
+				user={data?.data?.user}
+				type="artist"
+			/>
 
-					<PeriodTabs
-						data={data.data.tracks}
-						heading="Songs"
-						type="track"
-						user={data.data.user}
-					/>
-				</>
-			) : null}
+			<PeriodTabs
+				isLoading={isLoading}
+				data={data?.data?.tracks}
+				heading="Songs"
+				type="track"
+				user={data?.data?.user}
+			/>
 		</div>
 	);
 }
