@@ -42,6 +42,7 @@ export default function PeriodTabs({ isLoading, data, user, type }) {
 
 	return (
 		<div className="mt-12">
+			{console.log(data, "data")}
 			{isLoading ? <ProfileSkeleton /> : <Profile type={type} user={user} />}
 
 			<Tab.Group
@@ -52,22 +53,24 @@ export default function PeriodTabs({ isLoading, data, user, type }) {
 				}}
 			>
 				<Tab.List className="flex space-x-1 rounded-xl p-1 gap-4">
-					{/* {Object.keys(data).map((timeRange) => (
-						<Tab
-							key={timeRange}
-							className={({ selected }) =>
-								classNames(
-									"mt-4 rounded-lg py-2 px-2 outline-transparent  font-medium  leading-none",
-									selected
-										? "bg-indigo-50 text-indigo-900 shadow"
-										: "text-gray-800"
-								)
-							}
-						>
-							{mapping[timeRange]}
-						</Tab>
-					))} */}
-					{Object.values(mapping).map((timeRange) => (
+					{isLoading
+						? "Loading"
+						: Object.keys(data).map((timeRange) => (
+								<Tab
+									key={timeRange}
+									className={({ selected }) =>
+										classNames(
+											"mt-4 rounded-lg py-2 px-2 outline-transparent  font-medium  leading-none",
+											selected
+												? "bg-indigo-50 text-indigo-900 shadow"
+												: "text-gray-800"
+										)
+									}
+								>
+									{mapping[timeRange]}
+								</Tab>
+						  ))}
+					{/* {Object.values(mapping).map((timeRange) => (
 						<Tab
 							key={timeRange}
 							className={({ selected }) =>
@@ -81,7 +84,7 @@ export default function PeriodTabs({ isLoading, data, user, type }) {
 						>
 							{timeRange}
 						</Tab>
-					))}
+					))} */}
 				</Tab.List>
 				<Tab.Panels className="mt-2">
 					{isLoading ? (
