@@ -9,6 +9,7 @@ export const metadata = {
 	title: "Spotify Top artists and songs",
 	description:
 		"Get statistics about your top artists, songs, and genres from Spotify.",
+		icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({ children }) {
